@@ -1,0 +1,40 @@
+# 📂 Application Source Code (Source Root)
+
+This folder contains all the application's business logic, written in **TypeScript**. The code from here is compiled into production JavaScript (in the `/dist` folder in the project root).
+
+---
+
+## 🏗️ `src` Folder Structure
+
+* 📂 **routes/** — Application routing (API endpoints / Page routes).
+* `index.ts` — Main/public routes.
+* `users.ts` — Routes for user management.
+* 📄 **app.ts** — The main Express configuration file. Global middleware (parsers, loggers, static files) are included here, error handling is configured, and routes are mounted.
+* 📄 **server.ts** — The application entry point. Creates a Node.js HTTP server, initializes ports, and starts listening on the network.
+
+---
+
+## 🚦 Development Rules in `src`
+
+### 1. Import Syntax (ES Modules + NodeNext)
+This project uses modern module resolution. Because of this, when importing **local** files (files from this project), we must explicitly specify the `.js` extension, even though we're writing code in `.ts` files:
+
+```typescript
+// ❌ INCORRECT:
+import { userRouter } from './routes/users';
+
+// CORRECT:
+import { userRouter } from './routes/users.js';
+```
+*(For external modules from `node_modules`, you don't need to specify the extension, for example: `import express from 'express'`).*
+
+### 2. Exports
+Instead of the deprecated `module.exports = ...`, always use standard TypeScript exports:
+```typescript
+export default router;
+// or
+export const myFunction = () => {};
+```
+
+### 3. Strong Typing (`strict: true`)
+Try to avoid using the `any` type unless absolutely necessary. Always type function arguments, middleware, and return values ​​to maintain code reliability.
