@@ -21,5 +21,7 @@ class AuthService {
         this.model = model;        
     }
 
-    
+
 }
+
+export default AuthService;

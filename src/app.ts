@@ -11,6 +11,10 @@ import { UserModel } from './model/userModel';
 import { tokenModel } from './model/tokenModel';
 import { productModel } from './model/productModel';
 
+import UserService from './service/User.service';
+import ProductService from './service/Product.service';
+import AuthService from './service/Auth.service';
+
 const app = express();
 
 interface IAppLocals {
@@ -21,8 +25,28 @@ interface IAppLocals {
   };
 
   services : {
-    
+    users : UserService;
+    products : ProductService;
+    auth : AuthService;
+  };
+}
+
+declare global {
+  namespace Express {
+    interface Locals extends IAppLocals {}
   }
+}
+
+app.locals.model = {
+  users : UserModel,
+  products : productModel,
+  token : tokenModel,
+}
+
+app.locals.services = {
+  users : new UserService(app.locals.model),
+  products : new ProductService(app.locals.model),
+  auth : new AuthService(app.locals.model),
 }
 
 const connect : any = process.env.ATLAS_URL;

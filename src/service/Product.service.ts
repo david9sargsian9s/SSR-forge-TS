@@ -1,4 +1,4 @@
-import { Model } from "mongoose";
+import { productModel } from "../model/productModel";
 
 interface IProduct {
   name: string;
@@ -8,8 +8,9 @@ interface IProduct {
   stock: number;
 };
 
+
 interface Imodels {
-    users : Model<IProduct>
+    products: typeof productModel;
 }
 
 class ProductService {
