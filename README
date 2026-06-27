@@ -1,0 +1,108 @@
+# SSR Forge TS 🚀
+
+A lightweight **starter boilerplate for SSR (Server-Side Rendering) backend applications** built with **Node.js, Express, TypeScript, and MongoDB (Mongoose)**.
+
+It provides a ready-to-use backend architecture with authentication, roles, and basic modules for fast project bootstrapping.
+
+---
+
+## 📦 Features
+
+- ⚡ Express + TypeScript setup
+- 🧱 MVC-like structure (Models / Services / Routes)
+- 🗄 MongoDB integration with Mongoose
+- 🔐 JWT authentication (access & refresh tokens)
+- 🍪 Cookie-based auth support
+- 👥 Role-based access control (`user`, `admin`, `moderator`)
+- 📦 Prebuilt User, Product, and Token models
+- 🧩 Service-based architecture
+- ❗ Centralized error handling
+- 🌱 Environment variables support (`dotenv`)
+
+---
+
+## 📁 Project Structure
+
+
+src/
+├── model/ # Mongoose models
+├── service/ # Business logic layer
+├── routes/ # Express routes
+├── middleware/ # Auth & custom middleware
+├── app.ts # Express app setup
+├── server.ts # Server entry point
+
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone <repo-url>
+cd ssr-forgeTS
+2. Install dependencies
+npm install
+3. Create environment variables
+
+Create a .env file in the root:
+
+PORT=3000
+ATLAS_URL=your_mongodb_connection_string
+JWT_ACCESS_SECRET=your_secret
+JWT_REFRESH_SECRET=your_refresh_secret
+CLIENT_URL=http://localhost:5173
+
+4. Run in development mode
+npm run dev
+
+This runs the project using ts-node (no dist folder needed).
+
+5. Build project
+npm run build
+
+This compiles TypeScript into JavaScript inside the dist/ folder.
+
+6. Run production build
+npm start
+
+This runs compiled code:
+
+node dist/server.js
+⚙️ How it works
+Development mode
+Uses ts-node
+Runs TypeScript directly
+No build step required
+Production mode
+TypeScript is compiled via tsc
+Output is stored in dist/
+Node runs compiled JavaScript
+🔐 Authentication
+
+The project includes:
+
+JWT Access Token
+JWT Refresh Token
+Cookie-based storage
+Role-based access control
+🧠 Notes
+This project is designed as a boilerplate / starter template, not a full application.
+You are expected to extend it (add sockets, payments, etc.) depending on your needs.
+Keep architecture simple and expand only when required.
+📌 Scripts
+npm run dev     # Start development server
+npm run build   # Compile TypeScript
+npm start       # Run production build
+💡 Philosophy
+
+This boilerplate follows a minimal but scalable architecture:
+
+Add complexity only when the project actually needs it.
+
+No unnecessary abstractions, no over-engineering.
+
+📄 License
+
+MIT
