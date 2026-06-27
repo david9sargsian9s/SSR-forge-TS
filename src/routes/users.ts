@@ -4,7 +4,13 @@ var router = express.Router();
 
 const user = new UserController();
 
-/* GET users listing. */
-router.get('/api/users', user.createUser);
+/* POST user. */
+router.post('/api/users', user.createUser);
+
+/* PATCH user info. */
+router.patch('/api/users', user.updateUser);
+
+/* DELETE user info. */
+router.patch('/api/users', user.deleteUser);
 
 export default router;
