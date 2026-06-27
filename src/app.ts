@@ -7,7 +7,23 @@ import 'dotenv/config';
 
 import usersRouter from './routes/users';
 
+import { UserModel } from './model/userModel';
+import { tokenModel } from './model/tokenModel';
+import { productModel } from './model/productModel';
+
 const app = express();
+
+interface IAppLocals {
+  model : {
+    users : typeof UserModel;
+    products : typeof productModel;
+    token : typeof tokenModel;
+  };
+
+  services : {
+    
+  }
+}
 
 const connect : any = process.env.ATLAS_URL;
 mongoose.connect(connect);
