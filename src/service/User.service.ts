@@ -1,27 +1,16 @@
-import { Model } from "mongoose";
-
-interface IUser {
-  name: string;
-  nameLength?: number;
-  age: number;
-  email: string;
-  password: string;
-  role: 'user' | 'admin' | 'moderator';
-  status: 'active' | 'banned' | 'pending';
-}
-
-interface Imodels {
-    users : Model<IUser>
-}
+import { IUser } from "../model/userModel";
+import { IModels } from "../types/models";
 
 class UserService {
-    private model : Imodels;
-    
-    constructor(model : Imodels) {
+    private model: IModels;
+
+    constructor(model: IModels) {
         this.model = model;
     }
 
-    
+    async createUser(body: IUser) {
+        return await this.model.users.create(body);
+    }
 }
 
 export default UserService;

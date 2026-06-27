@@ -15,19 +15,19 @@ import UserService from './service/User.service';
 import ProductService from './service/Product.service';
 import AuthService from './service/Auth.service';
 
+import { IModels } from "./types/models";
+
+
 const app = express();
 
-interface IAppLocals {
-  model : {
-    users : typeof UserModel;
-    products : typeof productModel;
-    token : typeof tokenModel;
-  };
 
-  services : {
-    users : UserService;
-    products : ProductService;
-    auth : AuthService;
+interface IAppLocals {
+  model: IModels;
+
+  services: {
+    users: UserService;
+    products: ProductService;
+    auth: AuthService;
   };
 }
 

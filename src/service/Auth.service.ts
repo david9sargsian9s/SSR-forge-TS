@@ -1,27 +1,11 @@
-import { Model } from "mongoose";
-
-interface IUser {
-  name: string;
-  nameLength?: number;
-  age: number;
-  email: string;
-  password: string;
-  role: 'user' | 'admin' | 'moderator';
-  status: 'active' | 'banned' | 'pending';
-}
-
-interface Imodels {
-    users : Model<IUser>
-}
+import { IModels } from "../types/models";
 
 class AuthService {
-    private model : Imodels;
+    private model: IModels;
 
-    constructor(model : Imodels) {
-        this.model = model;        
+    constructor(model: IModels) {
+        this.model = model;
     }
-
-
 }
 
 export default AuthService;

@@ -1,26 +1,16 @@
-import { productModel } from "../model/productModel";
-
-interface IProduct {
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  stock: number;
-};
-
-
-interface Imodels {
-    products: typeof productModel;
-}
+import { IProduct } from "../model/productModel";
+import { IModels } from "../types/models";
 
 class ProductService {
-    private model : Imodels;
+    private model: IModels;
 
-    constructor(model : Imodels) {
+    constructor(model: IModels) {
         this.model = model;
     }
 
-
+    async createProduct(body: IProduct) {
+        return await this.model.products.create(body);
+    }
 }
 
 export default ProductService;
