@@ -8,8 +8,16 @@ class ProductService {
         this.model = model;
     }
 
-    async createProduct(body: IProduct) {
+    async createProduct(body: IProduct): Promise<IProduct> {
         return await this.model.products.create(body);
+    }
+
+    async updateProduct(Pid : string, body : IProduct): Promise<IProduct | null> {
+        return await this.model.products.findOneAndUpdate({ id : Pid }, { $set : body }, { new : true });
+    }
+
+    async deleteProduct(Pid : string): Promise<IProduct | null> {
+        return await this.model.products.findOneAndDelete({ id : Pid });
     }
 }
 
