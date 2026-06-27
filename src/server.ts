@@ -7,6 +7,7 @@
 import app from './app.js';
 import debugModule from 'debug';
 import http from 'http';
+import 'dotenv/config';
 
 const debug = debugModule('ssr-forgets:server');
 
@@ -14,7 +15,7 @@ const debug = debugModule('ssr-forgets:server');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env['PORT'] || '3000');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
