@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { Id } from '../types/id';
 
 class UserController {
     async createUser(req : Request, res : Response) {
@@ -22,9 +23,10 @@ class UserController {
                 return res.status(401).json({ error: "the user is not authorized." });
             }
 
+            const targetId : Id = req.params.id;
             const Uid = req.user.id;
             
-            const UpdatedInfo = await req.app.locals.services.users.updateUser(Uid, req.body);
+            const UpdatedInfo = await req.app.locals.services.users.updateUser(targetId, req.body);
             res.status(200).set({
                 'content-type' : 'application/json',
                 'Cache-Control' : 'max-age=70',
@@ -43,9 +45,10 @@ class UserController {
                 return res.status(401).json({ error : "the user is not authorized or is not defined." });
             }
 
+            const targetId : Id = req.params.id;
             const Uid = req.user.id;
 
-            const deleted = await req.app.locals.services.users.deleteUser(Uid);
+            const deleted = await req.app.locals.services.users.deleteUser(targetId);
 
             return res.status(200).json({ success : true, deleted })
         } catch (error : unknown) {

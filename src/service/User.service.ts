@@ -1,4 +1,5 @@
 import { IUser, IUserDocument } from "../model/userModel";
+import { Id } from "../types/id";
 import { IModels } from "../types/models";
 
 
@@ -13,12 +14,12 @@ class UserService {
         return await this.model.users.create(body);
     }
 
-    async updateUser(Uid : string, body : IUser): Promise<IUserDocument | null> {
+    async updateUser(Uid : Id, body : IUser): Promise<IUserDocument | null> {
         const { _id, ...updateData } = body as any; 
         return await this.model.users.findOneAndUpdate({ _id : Uid }, { $set : body }, { new : true });
     }
 
-    async deleteUser(Uid : string): Promise<IUserDocument | null> {
+    async deleteUser(Uid : Id): Promise<IUserDocument | null> {
         return await this.model.users.findOneAndDelete({ _id : Uid })
     }
 }
