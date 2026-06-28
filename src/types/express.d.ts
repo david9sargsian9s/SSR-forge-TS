@@ -6,6 +6,7 @@ declare global {
     interface Request {
       user?: {
         id: string;
+        role: 'user' | 'moderator' | 'admin';
       };
       product?: IProduct & { id : string };
     }
