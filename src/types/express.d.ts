@@ -1,4 +1,4 @@
-import * as express from 'express';
+export {};
 
 declare global {
   namespace Express {
@@ -6,7 +6,6 @@ declare global {
       user?: {
         id: string;
       };
-      product?: Product;
     }
   }
 }
