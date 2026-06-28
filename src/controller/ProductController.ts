@@ -48,6 +48,8 @@ class ProductController {
             const Pid = req.product.id;
 
             const deleted = await req.app.locals.services.products.deleteProduct(Pid);
+
+            res.status(200).json({ deleted });
         } catch (error : unknown) {
             if (error instanceof Error) {
                 return res.status(400).json({ error: error.message });

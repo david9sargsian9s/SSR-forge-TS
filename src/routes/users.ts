@@ -11,6 +11,6 @@ router.post('/api/users', user.createUser);
 router.patch('/api/users', user.updateUser);
 
 /* DELETE user info. */
-router.patch('/api/users', user.deleteUser);
+router.delete('/api/users', user.deleteUser);
 
 export default router;
