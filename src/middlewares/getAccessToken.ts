@@ -20,7 +20,7 @@ function getAccessFromCheck(req : Request, res : Response, next : NextFunction) 
     }
 
     try {
-        const decoded = jwt.verify(token, secret) as JwtData;
+        const decoded = jwt.verify(token, secret) as { id: string; role: 'user' | 'admin' | 'moderator' };
 
         req.user = decoded;
 
