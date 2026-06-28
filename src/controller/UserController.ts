@@ -46,6 +46,8 @@ class UserController {
             const Uid = req.user.id;
 
             const deleted = await req.app.locals.services.users.deleteUser(Uid);
+
+            return res.status(200).json({ success : true, deleted })
         } catch (error : unknown) {
             if (error instanceof Error) {
                 return res.status(400).json({ error: error.message });

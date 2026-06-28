@@ -1,4 +1,5 @@
-export {};
+import { IUserDocument } from "../model/userModel";
+import { IProduct } from "../model/productModel";
 
 declare global {
   namespace Express {
@@ -6,6 +7,7 @@ declare global {
       user?: {
         id: string;
       };
+      product?: IProduct & { id : string };
     }
   }
 }

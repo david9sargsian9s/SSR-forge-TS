@@ -1,5 +1,6 @@
 import express from 'express';
 import ProductController from '../controller/ProductController';
+import loadProduct from '../middlewares/loadProduct';
 
 const router = express.Router();
 const product = new ProductController();
@@ -8,9 +9,9 @@ const product = new ProductController();
 router.post('/api/products', product.createProduct);
 
 /* PATCH to update product. */
-router.patch("/api/product/:id", product.updateProduct);
+router.patch("/api/product/:id", loadProduct, product.updateProduct);
 
-/* POST to delete product. */
-router.delete('/api/product/:id', product.deleteProduct);
+/* DELETE to delete product. */
+router.delete('/api/product/:id', loadProduct, product.deleteProduct);
 
 export default router;

@@ -1,3 +1,4 @@
+export {};
 import createError from 'http-errors';
 import express, { Request, Response, NextFunction } from 'express';
 import cookieParser from 'cookie-parser';
@@ -6,6 +7,8 @@ import mongoose from 'mongoose';
 import 'dotenv/config';
 
 import usersRouter from './routes/users';
+import authRouter from './routes/auth';
+import productRouter from './routes/product';
 
 import { UserModel } from './model/userModel';
 import { tokenModel } from './model/tokenModel';
@@ -31,10 +34,8 @@ interface IAppLocals {
   };
 }
 
-declare global {
-  namespace Express {
-    interface Locals extends IAppLocals {}
-  }
+declare module "express-serve-static-core" {
+  interface Locals extends IAppLocals {}
 }
 
 app.locals.model = {
@@ -59,6 +60,8 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);
+app.use('/auth', authRouter);
+app.use('/', productRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req : Request, res : Response, next : NextFunction) {
